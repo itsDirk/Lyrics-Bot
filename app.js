@@ -30,10 +30,12 @@ app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
 
       if (lyrics.startsWith("Failed to fetch song lyrics")) {
         responseEmbed
-          .setTitle(`Error Whilst Fetching Lyrics`)
-          .setDescription(`Looked for **${capitalize(requestedSong)}** by **${capitalize(requestedArtist)}**\n\n${lyrics}`)
+          .setTitle(`Something went wrong!`)
+          .setDescription(
+            `Something when wrong while looking for **${capitalize(requestedSong)}** by **${capitalize(requestedArtist)}**:\n\n\`${lyrics}\``
+          )
           .setThumbnail("https://media.tenor.com/qsyIIg0tvo4AAAAi/manimarcus.gif")
-          .setColor("#DD0000")
+          .setColor("#DD2222")
           .setTimestamp()
           .setFooter({ text: `Requested by ${username}`, iconURL: avatar });
       } else {
