@@ -19,8 +19,8 @@ app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
     const { name } = data;
 
     if (name === "lyrics") {
-      const requestedArtist = data.options[0].value;
-      const requestedSong = data.options[1].value;
+      const requestedSong = data.options[0].value;
+      const requestedArtist = data.options[1].value;
 
       const lyrics = await getSongLyrics(requestedArtist, requestedSong);
       const responseEmbed = new EmbedBuilder();
